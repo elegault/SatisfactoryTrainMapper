@@ -360,6 +360,10 @@ body.is-resizing-panels-vertical * {
   position: relative;
 }
 
+.grid-docked-panel-companion {
+  flex: 0 0 auto;
+}
+
 .grid-docked-panel > .workspace-toolbar-panel,
 .grid-docked-panel > .workspace-station-strip {
   width: 100%;
@@ -603,6 +607,37 @@ body.is-resizing-panels-vertical * {
   max-width: 340px;
 }
 
+.grid-docked-panel-companion .workspace-station-strip {
+  width: 100%;
+}
+
+.workspace-station-strip-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.55rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+
+.workspace-station-strip-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 999px;
+  border: 1px solid #3f5273;
+  background: #13253c;
+  color: #dbeafe;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
 .workspace-station-strip-title {
   margin: 0;
   font-size: 0.72rem;
@@ -623,7 +658,7 @@ body.is-resizing-panels-vertical * {
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 55vh;
+  max-height: 42vh;
 }
 
 .panel-dock-control {

@@ -867,7 +867,7 @@ export function GridCanvas(): JSX.Element {
   const connectionReview = useMemo(() => buildConnectionReview(map), [map])
   const displayToggles = map.settings.editorState.displayToggles
   const showSectionLabels = displayToggles.showSectionLabels
-  const showSignalEndpoints = displayToggles.showSignalEndpoints
+  const signalEndpointFilter = displayToggles.signalEndpointFilter
   const showDirectionalIndicators = displayToggles.showDirectionalIndicators
   const showValidationIcons = displayToggles.showValidationIcons
   const workspacePanelDock = (map.settings.editorState.panels.workspacePanelDock ?? 'Top') as DockSide
@@ -1523,7 +1523,7 @@ export function GridCanvas(): JSX.Element {
   }, [])
 
   function updateDisplayToggle(
-    key: 'showSectionLabels' | 'showSignalEndpoints' | 'showDirectionalIndicators' | 'showValidationIcons',
+    key: 'showSectionLabels' | 'showDirectionalIndicators' | 'showValidationIcons',
     value: boolean,
   ): void {
     updateMapSettings({
@@ -1532,6 +1532,18 @@ export function GridCanvas(): JSX.Element {
         displayToggles: {
           ...map.settings.editorState.displayToggles,
           [key]: value,
+        },
+      },
+    })
+  }
+
+  function updateSignalEndpointFilter(value: 'All' | 'SelectedOnly'): void {
+    updateMapSettings({
+      editorState: {
+        ...map.settings.editorState,
+        displayToggles: {
+          ...map.settings.editorState.displayToggles,
+          signalEndpointFilter: value,
         },
       },
     })
@@ -1681,6 +1693,22 @@ export function GridCanvas(): JSX.Element {
         {showLeadingHandle ? handle : null}
         {panel}
         {!showLeadingHandle ? handle : null}
+      </div>
+    )
+  }
+
+  function renderDockedCompanionPanel(
+    panel: JSX.Element,
+    dockSide: DockSide,
+    size: number,
+  ): JSX.Element {
+    const companionStyle: CSSProperties = isVerticalDockSide(dockSide)
+      ? { width: `${size}px` }
+      : { width: '100%' }
+
+    return (
+      <div className="grid-docked-panel grid-docked-panel-companion" style={companionStyle}>
+        {panel}
       </div>
     )
   }
@@ -2238,12 +2266,14 @@ export function GridCanvas(): JSX.Element {
               <span>Section Labels</span>
             </label>
             <label>
-              <input
-                type="checkbox"
-                checked={showSignalEndpoints}
-                onChange={(event) => updateDisplayToggle('showSignalEndpoints', event.target.checked)}
-              />
               <span>Signal Endpoints</span>
+              <select
+                value={signalEndpointFilter}
+                onChange={(event) => updateSignalEndpointFilter(event.target.value as 'All' | 'SelectedOnly')}
+              >
+                <option value="All">All</option>
+                <option value="SelectedOnly">Selected Only</option>
+              </select>
             </label>
             <label>
               <input
@@ -2291,21 +2321,8 @@ export function GridCanvas(): JSX.Element {
           <button
             type="button"
             className="fit-button"
-            onClick={() => {
-              updateMapSettings({
-                editorState: {
-                  ...map.settings.editorState,
-                  panels: {
-                    ...map.settings.editorState.panels,
-                    showStationSelectorPanel: !showStationSelectorPanel,
-                  },
-                },
-              })
-            }}
+            onClick={fitToViewport}
           >
-            {showStationSelectorPanel ? 'Hide Train Stations' : 'Show Train Stations'}
-          </button>
-          <button type="button" className="fit-button" onClick={fitToViewport}>
             Fit View
           </button>
           <button
@@ -2329,30 +2346,52 @@ export function GridCanvas(): JSX.Element {
           </label>
         </div>
       </div>
+    </section>
+  )
+
+  const stationSelectorPanel = (
+    <section className={workspacePanelVertical ? 'workspace-station-strip dock-vertical' : 'workspace-station-strip dock-horizontal'} aria-label="Station quick navigation">
+      <button
+        type="button"
+        className="workspace-station-strip-header"
+        onClick={() => {
+          updateMapSettings({
+            editorState: {
+              ...map.settings.editorState,
+              panels: {
+                ...map.settings.editorState.panels,
+                showStationSelectorPanel: !showStationSelectorPanel,
+              },
+            },
+          })
+        }}
+        aria-expanded={showStationSelectorPanel}
+      >
+        <span className="workspace-station-strip-title">Train Stations</span>
+        <span className="workspace-station-strip-toggle">{showStationSelectorPanel ? '−' : '+'}</span>
+      </button>
+
       {showStationSelectorPanel ? (
-        <section className={workspacePanelVertical ? 'workspace-station-strip dock-vertical' : 'workspace-station-strip dock-horizontal'} aria-label="Station quick navigation">
-          <p className="workspace-station-strip-title">Train Stations</p>
-          <div className="workspace-station-strip-list" role="list">
-            {orderedStations.map((station) => {
-              const isSelected = selectedEntity?.entityType === 'station' && selectedEntity.id === station.id
-              return (
-                <button
-                  key={station.id}
-                  type="button"
-                  role="listitem"
-                  className={isSelected ? 'workspace-station-chip active' : 'workspace-station-chip'}
-                  onClick={() => centerOnStation(station)}
-                  title={`Center and select ${station.stationName}`}
-                >
-                  {`#${station.stationNumber} ${station.stationName}`}
-                </button>
-              )
-            })}
-            {orderedStations.length === 0 && (
-              <p className="workspace-station-empty">No stations on this map yet.</p>
-            )}
-          </div>
-        </section>
+        <div className="workspace-station-strip-list" role="list">
+          {orderedStations.map((station) => {
+            const isSelected = selectedEntity?.entityType === 'station' && selectedEntity.id === station.id
+            return (
+              <button
+                key={station.id}
+                type="button"
+                role="listitem"
+                className={isSelected ? 'workspace-station-chip active' : 'workspace-station-chip'}
+                onClick={() => centerOnStation(station)}
+                title={`Center and select ${station.stationName}`}
+              >
+                {`#${station.stationNumber} ${station.stationName}`}
+              </button>
+            )
+          })}
+          {orderedStations.length === 0 && (
+            <p className="workspace-station-empty">No stations on this map yet.</p>
+          )}
+        </div>
       ) : null}
     </section>
   )
@@ -2362,13 +2401,19 @@ export function GridCanvas(): JSX.Element {
       <div className="grid-panel-layout">
         <div className="grid-panel-dock grid-panel-dock-top">
           {workspacePanelDock === 'Top' && (
-            renderDockedPanel(workspacePanel, 'workspacePanelSize', 'Top', workspacePanelSize, 'Workspace')
+            <>
+              {renderDockedPanel(workspacePanel, 'workspacePanelSize', 'Top', workspacePanelSize, 'Workspace')}
+              {renderDockedCompanionPanel(stationSelectorPanel, 'Top', workspacePanelSize)}
+            </>
           )}
         </div>
         <div className="grid-panel-middle">
           <div className="grid-panel-dock grid-panel-dock-left">
             {workspacePanelDock === 'Left' && (
-              renderDockedPanel(workspacePanel, 'workspacePanelSize', 'Left', workspacePanelSize, 'Workspace')
+              <>
+                {renderDockedPanel(workspacePanel, 'workspacePanelSize', 'Left', workspacePanelSize, 'Workspace')}
+                {renderDockedCompanionPanel(stationSelectorPanel, 'Left', workspacePanelSize)}
+              </>
             )}
           </div>
           <div className="canvas-wrap" ref={containerRef}>
@@ -2473,8 +2518,11 @@ export function GridCanvas(): JSX.Element {
                 const isSelected = selectedEntity?.entityType === 'section' && selectedEntity.id === section.id
                 const isHovered = hoveredSectionId === section.id
                 const isCurved = section.sectionKind === 'Curved'
-                const renderEndpoint1 = getSectionRenderEndpoint(section, 'endpoint1', endpointChannelLength)
-                const renderEndpoint2 = getSectionRenderEndpoint(section, 'endpoint2', endpointChannelLength)
+                const showSignalEndpointsForSection = signalEndpointFilter === 'All' ||
+                  (signalEndpointFilter === 'SelectedOnly' && isSelected)
+                const sectionEndpointInset = showSignalEndpointsForSection ? endpointChannelLength : 0
+                const renderEndpoint1 = getSectionRenderEndpoint(section, 'endpoint1', sectionEndpointInset)
+                const renderEndpoint2 = getSectionRenderEndpoint(section, 'endpoint2', sectionEndpointInset)
                 const sectionName = section.sectionName.trim()
                 const defaultSectionName = `Section ${section.sectionNumber}`
                 const sectionLabelText = sectionName !== '' && sectionName !== defaultSectionName
@@ -2815,9 +2863,17 @@ export function GridCanvas(): JSX.Element {
                 )
               })}
 
-              {activeTool === 'select' && showSignalEndpoints && (
+              {activeTool === 'select' && (
                 <Group listening={false}>
-                  {map.sections.map((section) => {
+                  {map.sections
+                    .filter((section) => {
+                      if (signalEndpointFilter === 'All') {
+                        return true
+                      }
+
+                      return selectedEntity?.entityType === 'section' && selectedEntity.id === section.id
+                    })
+                    .map((section) => {
                     const endpointKeys: SectionEndpointKey[] = ['endpoint1', 'endpoint2']
                     return endpointKeys.map((endpointKey) => {
                       const endpoint = endpointKey === 'endpoint1' ? section.endpoint1 : section.endpoint2
@@ -3750,13 +3806,19 @@ export function GridCanvas(): JSX.Element {
           </div>
           <div className="grid-panel-dock grid-panel-dock-right">
             {workspacePanelDock === 'Right' && (
-              renderDockedPanel(workspacePanel, 'workspacePanelSize', 'Right', workspacePanelSize, 'Workspace')
+              <>
+                {renderDockedPanel(workspacePanel, 'workspacePanelSize', 'Right', workspacePanelSize, 'Workspace')}
+                {renderDockedCompanionPanel(stationSelectorPanel, 'Right', workspacePanelSize)}
+              </>
             )}
           </div>
         </div>
         <div className="grid-panel-dock grid-panel-dock-bottom">
           {workspacePanelDock === 'Bottom' && (
-            renderDockedPanel(workspacePanel, 'workspacePanelSize', 'Bottom', workspacePanelSize, 'Workspace')
+            <>
+              {renderDockedPanel(workspacePanel, 'workspacePanelSize', 'Bottom', workspacePanelSize, 'Workspace')}
+              {renderDockedCompanionPanel(stationSelectorPanel, 'Bottom', workspacePanelSize)}
+            </>
           )}
         </div>
       </div>

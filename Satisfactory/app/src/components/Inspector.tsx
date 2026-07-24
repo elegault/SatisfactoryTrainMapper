@@ -130,6 +130,65 @@ function getSignalSocketHint(socket: EndpointSignalSocketState): string {
   return 'Route-aware suggestion'
 }
 
+function getSignalSocketStateAbbreviation(state: SignalSocketState): string {
+  if (state === 'Implemented') {
+    return 'I'
+  }
+
+  if (state === 'Off') {
+    return 'O'
+  }
+
+  return 'S'
+}
+
+function getSignalTypeAbbreviation(signalType: SignalType | null): string {
+  if (signalType === 'Block') {
+    return 'B'
+  }
+
+  if (signalType === 'Path') {
+    return 'P'
+  }
+
+  return 'None'
+}
+
+function formatSignalEndpointSummary(
+  section: RailwaySection,
+  routeSignalSuggestions: Map<string, SignalType | null>,
+): string {
+  const summarizeEndpoint = (endpointKey: 'endpoint1' | 'endpoint2'): string => {
+    const endpoint = endpointKey === 'endpoint1' ? section.endpoint1 : section.endpoint2
+    const leftState = getEndpointSignalSocketState(
+      endpoint,
+      'Left',
+      routeSignalSuggestions.get(`${section.id}:${endpointKey}:Left`) ?? null,
+    )
+    const rightState = getEndpointSignalSocketState(
+      endpoint,
+      'Right',
+      routeSignalSuggestions.get(`${section.id}:${endpointKey}:Right`) ?? null,
+    )
+
+    return `${endpointKey === 'endpoint1' ? '1' : '2'}: L-${getSignalSocketStateAbbreviation(leftState.state)}-${getSignalTypeAbbreviation(leftState.expectedType)}, R-${getSignalSocketStateAbbreviation(rightState.state)}-${getSignalTypeAbbreviation(rightState.expectedType)}`
+  }
+
+  return `${getSectionDisplayLabel(section)} (${summarizeEndpoint('endpoint1')}; ${summarizeEndpoint('endpoint2')})`
+}
+
+function hasNonStandardSignalSuggestion(
+  section: RailwaySection,
+  routeSignalSuggestions: Map<string, SignalType | null>,
+): boolean {
+  const endpoints: Array<'endpoint1' | 'endpoint2'> = ['endpoint1', 'endpoint2']
+  return endpoints.some((endpointKey) => {
+    const leftType = routeSignalSuggestions.get(`${section.id}:${endpointKey}:Left`) ?? null
+    const rightType = routeSignalSuggestions.get(`${section.id}:${endpointKey}:Right`) ?? null
+    return leftType === null || rightType === null
+  })
+}
+
 function getSectionEndpointConnectionDisplay(
   map: Pick<MapDocument, 'sections' | 'stations' | 'intersections'>,
   junctionLabelsByCoordinate: Map<string, string>,
@@ -1472,6 +1531,25 @@ export function Inspector({
   }, [findSectionPath, pathTarget, selectedSection])
 
   const connectionReview = useMemo(() => buildConnectionReview(map), [map])
+  const routeSignalSuggestions = useMemo(() => buildRouteSignalSuggestionMap(map), [map])
+  const sectionSignalEndpointSummaries = useMemo(
+    () =>
+      map.sections.map((section) => ({
+        id: section.id,
+        text: formatSignalEndpointSummary(section, routeSignalSuggestions),
+      })),
+    [map.sections, routeSignalSuggestions],
+  )
+  const nonStandardSignalSections = useMemo(
+    () =>
+      map.sections
+        .filter((section) => hasNonStandardSignalSuggestion(section, routeSignalSuggestions))
+        .map((section) => ({
+          id: section.id,
+          text: getSectionDisplayLabel(section),
+        })),
+    [map.sections, routeSignalSuggestions],
+  )
 
   useEffect(() => {
     setPathTarget('')
@@ -1683,6 +1761,30 @@ export function Inspector({
                       <p>{issue.message}</p>
                     </div>
                   ))}
+                </div>
+
+                <div className="nested-editor">
+                  <h4>Section Signal Summary</h4>
+                  <div className="review-issues-list">
+                    {sectionSignalEndpointSummaries.length === 0 && <p>No sections on this map yet.</p>}
+                    {sectionSignalEndpointSummaries.map((summary) => (
+                      <div key={summary.id} className="review-issue-row">
+                        <p>{summary.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="nested-editor">
+                  <h4>Non-Standard Suggested Signalling</h4>
+                  <div className="review-issues-list">
+                    {nonStandardSignalSections.length === 0 && <p>No non-standard signalling suggestions found.</p>}
+                    {nonStandardSignalSections.map((section) => (
+                      <div key={section.id} className="review-issue-row warning">
+                        <p>{section.text}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}

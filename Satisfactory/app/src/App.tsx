@@ -29,6 +29,7 @@ function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(map.settings.editorState.panels.sidebarCollapsed)
   const [inspectorCollapsed, setInspectorCollapsed] = useState(map.settings.editorState.panels.inspectorCollapsed)
   const [mapUiCollapsed, setMapUiCollapsed] = useState(map.settings.editorState.inspectorSections.mapUi)
+  const [loadedMapFileName, setLoadedMapFileName] = useState('')
   const [sidebarWidth, setSidebarWidth] = useState(map.settings.editorState.panels.sidebarWidth)
   const [inspectorWidth, setInspectorWidth] = useState(map.settings.editorState.panels.inspectorWidth)
   const sidebarWidthRef = useRef(sidebarWidth)
@@ -109,7 +110,10 @@ function App() {
     const text = await file.text()
     const result = loadFromDisk(text)
     if (!result.ok) {
+      setLoadedMapFileName('')
       alert(result.message)
+    } else {
+      setLoadedMapFileName(file.name)
     }
 
     event.currentTarget.value = ''
@@ -285,13 +289,14 @@ function App() {
                       }
 
                       clearMap()
+                      setLoadedMapFileName('')
                     }}
                   >
                     Clear Grid
                   </button>
 
                   <label className="file-import">
-                    <span>Import JSON</span>
+                    <span>{loadedMapFileName}</span>
                     <input type="file" accept="application/json" onChange={handleImport} />
                   </label>
                 </div>

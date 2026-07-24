@@ -29,6 +29,12 @@ The appropriate direction-facing locomotive will stop at the train station selec
 
 ## Core Rules
 
+- PATH SIGNALS AT EACH ENTRANCE, BEFORE EVERY JUNCTION
+  - Path signals go into the junction
+- BLOCK SIGNALS AT EACH EXIT
+  - Go out of the junction
+- Each section of track between signals is a block
+- At every entrance and exit, place block signals on the right side of the track - it turns the whole junction into a single block
 - Signals go on the right-hand side relative to the direction of travel.
 - Path signals belong before a decision point.
 - Block signals belong after a decision point.
@@ -73,7 +79,7 @@ An important aspect of train pathfinding is that it does not re-route. A path is
 
 #### Construction
 
-Both types of train signals can only be built on Railway tracks. Their placement automatically snaps to track joints. Alternatively, they may be also built freely along track segments,[1] as long as they're at least 12m from the end of the segment. Doing so will split the segment to form a new joint, which will not rejoin even if the signal is dismantled afterwards.
+Both types of train signals can only be built on Railway tracks. Their placement automatically snaps to track joints. Alternatively, they may be also built freely along track segments,[1] **as long as they're at least 12m from the end of the segment**. Doing so will split the segment to form a new joint, which will not rejoin even if the signal is dismantled afterwards.
 
 The forward direction of the signal is determined by which side of the joint is targeted. It helps to point at the track rather than the edge of the track. An arrow also indicates the forward direction.
 
@@ -83,7 +89,7 @@ Up to 2 signals facing opposite directions can be placed on each track joint. If
 
 Train signals can be set up for right-hand traffic (common) by placing on the right in direction of travel, or left-hand drive (less common) by placing on the left in direction of travel.
 
-Both Path signals and Block signals now have a “Left Side” and “Right Side” build mode that can be alternated by pressing R when having the hologram active.
+Both Path signals and Block signals now have a“Left Side”and“Right Side”build mode that can be alternated by pressing R when having the hologram active.
 
 ### Blocks
 
@@ -91,15 +97,15 @@ A block is the area between two signals. A block which contains any part of a tr
 
 Blocks are colored while a signal is being placed. Each block is given a different color and colors can be repeated on "other blocks". It can help understand signal placement errors to select a signal to place then examine where each block begins and ends by looking at their coloring.
 
-Blocks have to have at least one entry signal, as well as at least one exit signal (which will be the next block's entry signal). Blocks on a linear track will have only one entry and one exit signal, but branches will have multiple exit signals, merges will have multiple entry signals, and more complex intersections can have multiple entry and multiple exit signals. All entry signals for a block have to be of the same type, either all Block Signals or all Path Signals.
+Blocks have to have at least one entry signal, as well as at least one exit signal (which will be the next block's entry signal). Blocks on a linear track will have only one entry and one exit signal, but branches will have multiple exit signals, merges will have multiple entry signals, and more complex intersections can have multiple entry and multiple exit signals. **All entry signals for a block have to be of the same type, either all Block Signals or all Path Signals**.
 
 ### Block Signals
-
+N
 Block Signals work on a simple principle: they prevent trains from entering a block if another train already occupies it. If any part of a train is within a block ahead, then all Block Signals entering that block will be red, preventing other trains from entering that block. If the block ahead is empty, then all Block Signals entering that block will be green.
 
-Block Signals are typically used on straight double tracks and for stations. Bidirectional tracks and junctions are better handled by Path Signals.
+**Block Signals are typically used on straight double tracks and for stations. Bidirectional tracks and junctions are better handled by Path Signals.**
 
-Note: Block Signals shouldn't be used for blocks where tracks merge from multiple entrances (multiple trains might be able to enter and collide, even if the junction is signalled properly).
+**Note**: Block Signals shouldn't be used for blocks where tracks merge from multiple entrances (multiple trains might be able to enter and collide, even if the junction is signalled properly).
 
 ### Path Signals
 

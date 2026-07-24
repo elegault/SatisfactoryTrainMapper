@@ -318,9 +318,19 @@ const inspectorCollapseStateSchema = z.object({
   legend: z.boolean().default(false),
 })
 
+const signalEndpointFilterSchema = z
+  .union([z.enum(['All', 'SelectedOnly']), z.boolean()])
+  .transform((value) => {
+    if (typeof value === 'boolean') {
+      return value ? 'All' : 'SelectedOnly'
+    }
+
+    return value
+  })
+
 const displayToggleStateSchema = z.object({
   showSectionLabels: z.boolean().default(true),
-  showSignalEndpoints: z.boolean().default(true),
+  signalEndpointFilter: signalEndpointFilterSchema.default('SelectedOnly'),
   showDirectionalIndicators: z.boolean().default(true),
   showValidationIcons: z.boolean().default(true),
 })
@@ -361,7 +371,7 @@ const editorStateSchema = z.object({
   }),
   displayToggles: displayToggleStateSchema.default({
     showSectionLabels: true,
-    showSignalEndpoints: true,
+    signalEndpointFilter: 'SelectedOnly',
     showDirectionalIndicators: true,
     showValidationIcons: true,
   }),
@@ -443,7 +453,7 @@ export const mapSettingsSchema = z.object({
     },
     displayToggles: {
       showSectionLabels: true,
-      showSignalEndpoints: true,
+      signalEndpointFilter: 'SelectedOnly',
       showDirectionalIndicators: true,
       showValidationIcons: true,
     },

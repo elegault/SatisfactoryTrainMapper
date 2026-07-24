@@ -1,31 +1,34 @@
 {
   "schemaVersion": 1,
-  "lastUpdatedIso": "2026-07-21T02:03:38.262Z",
+  "lastUpdatedIso": "2026-07-22T18:54:25.265Z",
   "settings": {
     "title": "Main Rail Network",
     "worldWidth": 1000,
     "worldHeight": 1000,
     "defaultSectionColor": "#da0fec",
+    "signalEndpointChannelStyle": {
+      "color": "#38bdf8",
+      "length": 35,
+      "width": 10
+    },
     "junctionNumberOverrides": [],
     "editorState": {
       "viewport": {
-        "zoom": 1.6325867520000001,
-        "panX": 347,
-        "panY": 166
+        "zoom": 1.0288065843621397,
+        "panX": 350.0000001826488,
+        "panY": 172.00055485994628
       },
-      "lastSelected": {
-        "entityType": "section",
-        "id": "section-97c618c9-3c50-4782-85d2-39ba5b9dfd44"
-      },
+      "lastSelected": null,
       "panels": {
-        "topbarCollapsed": true,
-        "sidebarCollapsed": false,
+        "topbarCollapsed": false,
+        "sidebarCollapsed": true,
         "inspectorCollapsed": false,
+        "showStationSelectorPanel": false,
         "sidebarWidth": 260,
-        "inspectorWidth": 732,
+        "inspectorWidth": 473,
         "workspacePanelDock": "Left",
         "stationSelectorDock": "Right",
-        "workspacePanelSize": 440,
+        "workspacePanelSize": 339,
         "stationSelectorSize": 255
       },
       "inspectorSections": {
@@ -39,9 +42,9 @@
       },
       "displayToggles": {
         "showSectionLabels": true,
-        "showSignalEndpoints": true,
+        "signalEndpointFilter": "SelectedOnly",
         "showDirectionalIndicators": true,
-        "showValidationIcons": false
+        "showValidationIcons": true
       }
     },
     "labelStyles": {
@@ -143,12 +146,12 @@
       "sectionInNumber": 3,
       "sectionOutNumber": 2,
       "inbound": {
-        "x": 215,
-        "y": -103
+        "x": 242.00000164383982,
+        "y": -85.8984186491532
       },
       "outbound": {
-        "x": 295,
-        "y": -103
+        "x": 322.0000016438398,
+        "y": -85.8984186491532
       },
       "liquidFreightStationCount": 0,
       "solidFreightStationCount": 1,
@@ -172,12 +175,12 @@
       "sectionInNumber": 2,
       "sectionOutNumber": 6,
       "inbound": {
-        "x": 897.8999999999996,
-        "y": -168.50612754529118
+        "x": 907.800000602741,
+        "y": -165.8058778583154
       },
       "outbound": {
-        "x": 977.8999999999996,
-        "y": -168.50612754529118
+        "x": 987.800000602741,
+        "y": -165.8058778583154
       },
       "liquidFreightStationCount": 0,
       "solidFreightStationCount": 1,
@@ -287,8 +290,8 @@
       "endpoint2": {
         "sectionNumber": 4,
         "coordinate": {
-          "x": 865.5999999999999,
-          "y": -322.5336284578759
+          "x": 871.2666669954343,
+          "y": -321.9444595903001
         },
         "stationConnection": null,
         "signalSockets": {
@@ -317,8 +320,8 @@
       "endpoint1": {
         "sectionNumber": 2,
         "coordinate": {
-          "x": 351,
-          "y": -103
+          "x": 378.0000016438398,
+          "y": -85.8984186491532
         },
         "stationConnection": {
           "stationId": "station-04b3fb4f-da61-45fa-b7e2-a55d55484ef4",
@@ -339,8 +342,8 @@
       "endpoint2": {
         "sectionNumber": 2,
         "coordinate": {
-          "x": 937.8999999999996,
-          "y": -124.50612754529118
+          "x": 947.800000602741,
+          "y": -121.8058778583154
         },
         "stationConnection": {
           "stationId": "station-2dc539fc-601d-4ccb-9c94-9c2c25be0163",
@@ -372,8 +375,8 @@
       "endpoint1": {
         "sectionNumber": 4,
         "coordinate": {
-          "x": 188.39999999999998,
-          "y": -413.9
+          "x": 163,
+          "y": -353
         },
         "stationConnection": null,
         "signalSockets": {
@@ -391,8 +394,8 @@
       "endpoint2": {
         "sectionNumber": 3,
         "coordinate": {
-          "x": 159,
-          "y": -103
+          "x": 186.00000164383982,
+          "y": -85.8984186491532
         },
         "stationConnection": {
           "stationId": "station-04b3fb4f-da61-45fa-b7e2-a55d55484ef4",
@@ -424,8 +427,8 @@
       "endpoint1": {
         "sectionNumber": 3,
         "coordinate": {
-          "x": 188,
-          "y": -414
+          "x": 163,
+          "y": -353
         },
         "stationConnection": null,
         "signalSockets": {
@@ -443,8 +446,8 @@
       "endpoint2": {
         "sectionNumber": 1,
         "coordinate": {
-          "x": 866,
-          "y": -323
+          "x": 871,
+          "y": -322
         },
         "stationConnection": null,
         "signalSockets": {
@@ -473,8 +476,8 @@
       "endpoint1": {
         "sectionNumber": 1,
         "coordinate": {
-          "x": 865.5999999999999,
-          "y": -322.5336284578759
+          "x": 871.2666669954343,
+          "y": -321.9444595903001
         },
         "stationConnection": null,
         "signalSockets": {
@@ -492,8 +495,8 @@
       "endpoint2": {
         "sectionNumber": 6,
         "coordinate": {
-          "x": 937.8999999999996,
-          "y": -212.50612754529118
+          "x": 947.800000602741,
+          "y": -209.8058778583154
         },
         "stationConnection": {
           "stationId": "station-2dc539fc-601d-4ccb-9c94-9c2c25be0163",
@@ -525,8 +528,8 @@
       "endpoint1": {
         "sectionNumber": 3,
         "coordinate": {
-          "x": 188,
-          "y": -414
+          "x": 163,
+          "y": -353
         },
         "stationConnection": null,
         "signalSockets": {
