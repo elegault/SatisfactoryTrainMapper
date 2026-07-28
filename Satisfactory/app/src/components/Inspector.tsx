@@ -6,6 +6,7 @@ import type {
   RailwaySection,
   SectionDirection,
   Signal,
+  SignalBuildMode,
   SignalSocketState,
   SignalType,
   StationFreightSlot,
@@ -62,6 +63,7 @@ const freightStationTypes = ['Freight', 'Liquid'] as const
 const freightModes = ['Load', 'Unload'] as const
 const signalTypes = ['Block', 'Path'] as const
 const signalSocketStates = ['Suggested', 'Implemented', 'Off'] as const
+const signalBuildModes = ['RightSide', 'LeftSide'] as const
 const sectionKinds = ['Straight', 'Curved'] as const
 
 function getDerivedEntranceMode(
@@ -1269,6 +1271,69 @@ function SignalEditor({
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="nested-editor">
+        <h4>Socket Build Modes</h4>
+        <div className="form-grid compact-grid">
+          <label>
+            <span>Socket A Build Mode</span>
+            {signal.socketA ? (
+              (() => {
+                const socketA = signal.socketA
+                return (
+              <select
+                value={socketA.buildMode ?? 'RightSide'}
+                onChange={(event) =>
+                  updateSignal(signal.id, {
+                    socketA: {
+                      sectionId: socketA.sectionId,
+                      endpointKey: socketA.endpointKey,
+                      side: socketA.side,
+                      buildMode: event.target.value as SignalBuildMode,
+                    },
+                  })
+                }
+              >
+                {renderSelectOptions(signalBuildModes)}
+              </select>
+                )
+              })()
+            ) : (
+              <input type="text" readOnly value="Not attached" />
+            )}
+          </label>
+          <label>
+            <span>Socket B Build Mode</span>
+            {signal.socketB ? (
+              (() => {
+                const socketB = signal.socketB
+                return (
+              <select
+                value={socketB.buildMode ?? 'RightSide'}
+                onChange={(event) =>
+                  updateSignal(signal.id, {
+                    socketB: {
+                      sectionId: socketB.sectionId,
+                      endpointKey: socketB.endpointKey,
+                      side: socketB.side,
+                      buildMode: event.target.value as SignalBuildMode,
+                    },
+                  })
+                }
+              >
+                {renderSelectOptions(signalBuildModes)}
+              </select>
+                )
+              })()
+            ) : (
+              <input type="text" readOnly value="Not attached" />
+            )}
+          </label>
+        </div>
+        <p className="signal-socket-hint">
+          Build mode is stored separately from the physical endpoint side.
+        </p>
       </div>
     </div>
   )
