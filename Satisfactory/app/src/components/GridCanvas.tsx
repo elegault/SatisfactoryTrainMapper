@@ -1120,7 +1120,7 @@ export function GridCanvas(): JSX.Element {
       for (const endpointKey of endpointKeys) {
         const endpoint = endpointKey === 'endpoint1' ? section.endpoint1 : section.endpoint2
         for (const side of sides) {
-          const ref: SignalSocketRef = { sectionId: section.id, endpointKey, side }
+          const ref: SignalSocketRef = { sectionId: section.id, endpointKey, side, buildMode: 'RightSide' }
           const point = getSectionSignalSocketPoint(section, endpointKey, side)
           const routeSuggestedType = routeSignalSuggestions.get(`${section.id}:${endpointKey}:${side}`) ?? null
           const visualState = getSocketVisualState(endpoint, side, routeSuggestedType)

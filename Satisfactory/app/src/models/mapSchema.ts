@@ -29,6 +29,9 @@ export type RailwaySectionKind = z.infer<typeof railwaySectionKindSchema>
 export const sectionDirectionSchema = z.enum(['Bidirectional', 'OneWay1To2', 'OneWay2To1'])
 export type SectionDirection = z.infer<typeof sectionDirectionSchema>
 
+export const signalBuildModeSchema = z.enum(['LeftSide', 'RightSide'])
+export type SignalBuildMode = z.infer<typeof signalBuildModeSchema>
+
 export const labelShapeSchema = z.enum(['Circle', 'Rectangle', 'Diamond', 'Triangle', 'Hexagon'])
 export type LabelShape = z.infer<typeof labelShapeSchema>
 
@@ -109,6 +112,7 @@ const signalSocketRefSchema = z.object({
   sectionId: z.string(),
   endpointKey: z.enum(['endpoint1', 'endpoint2']),
   side: z.enum(['Left', 'Right']),
+  buildMode: signalBuildModeSchema.default('RightSide'),
 })
 
 const labelStyleSchema = z.object({

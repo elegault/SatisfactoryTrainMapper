@@ -976,7 +976,7 @@ function SectionEditor({
             </select>
           </label>
           <label>
-            <span>Left Build Mode Signal Type</span>
+            <span>Left Socket Signal Type</span>
             <select
               value={endpoint1SignalLeft.expectedType ?? ''}
               disabled={endpoint1SignalLeft.state === 'Off'}
@@ -1005,7 +1005,7 @@ function SectionEditor({
             </select>
           </label>
           <label>
-            <span>Right Build Mode Signal Type</span>
+            <span>Right Socket Signal Type</span>
             <select
               value={endpoint1SignalRight.expectedType ?? ''}
               disabled={endpoint1SignalRight.state === 'Off'}
@@ -1056,7 +1056,7 @@ function SectionEditor({
             </select>
           </label>
           <label>
-            <span>Left Build Mode Signal Type</span>
+            <span>Left Socket Signal Type</span>
             <select
               value={endpoint2SignalLeft.expectedType ?? ''}
               disabled={endpoint2SignalLeft.state === 'Off'}
@@ -1085,7 +1085,7 @@ function SectionEditor({
             </select>
           </label>
           <label>
-            <span>Right Build Mode Signal Type</span>
+            <span>Right Socket Signal Type</span>
             <select
               value={endpoint2SignalRight.expectedType ?? ''}
               disabled={endpoint2SignalRight.state === 'Off'}
