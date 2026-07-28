@@ -1,6 +1,6 @@
 import type { MapDocument, RailwaySection } from './mapSchema'
 
-export type GraphEdgeReason = 'reference' | 'coordinate'
+export type GraphEdgeReason = 'reference' | 'coordinate' | 'station'
 
 export type SectionGraphEdge = {
   from: number
@@ -148,7 +148,7 @@ function getEndpointRefs(section: RailwaySection): EndpointRef[] {
 }
 
 export function buildSectionConnectivityGraph(
-  map: Pick<MapDocument, 'sections'>,
+  map: Pick<MapDocument, 'sections'> & Partial<Pick<MapDocument, 'stations'>>,
 ): SectionConnectivityGraph {
   if (!map.sections || map.sections.length === 0) {
     return createEmptyGraph()
@@ -245,6 +245,24 @@ export function buildSectionConnectivityGraph(
         connectDirected(directedAdjacency, directedEdges, from.sectionNumber, to.sectionNumber, 'coordinate')
       }
     }
+  }
+
+  // Optional traversal through a station between sectionIn and sectionOut in both directions.
+  // This keeps path checks from treating stations as hard graph breaks for round trips.
+  for (const station of map.stations ?? []) {
+    const from = station.sectionInNumber
+    const to = station.sectionOutNumber
+    if (from === null || to === null) {
+      continue
+    }
+
+    if (!sectionSet.has(from) || !sectionSet.has(to) || from === to) {
+      continue
+    }
+
+    connectUndirected(adjacency, edges, from, to, 'station')
+    connectDirected(directedAdjacency, directedEdges, from, to, 'station')
+    connectDirected(directedAdjacency, directedEdges, to, from, 'station')
   }
 
   const adjacencyRecord: Record<number, number[]> = {}

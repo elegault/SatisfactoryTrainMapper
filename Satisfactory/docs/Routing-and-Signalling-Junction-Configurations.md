@@ -89,3 +89,41 @@ Beyond these three and the ones we've already covered (single dead-end junction,
 The rule this one demonstrates: never let a Path Signal feed directly into another Path Signal. The path from the first junction toward the second gets a Block Signal right after leaving the first switch, and only picks up a Path Signal again once it's actually approaching the second switch. Skipping that buffer is what causes the deadlock-prone chaining the earlier community guidance warned about — a train reserving all the way through the first switch would also try to reserve through the second, and if that reservation fails, it can end up stuck straddling both.
 
 **The above covers the large majority of common layouts.**
+
+NOTE: Each leg's signal need is entirely determined by that leg's own directionality relative to the junction. You don't need to know the other legs, and you don't need to know what's beyond the trunk's far end. Here's the canonical lookup:
+
+| Leg's directionality **at this junction** | Signal(s) placed on this leg, at this junction | Why |
+|---|---|---|
+| One-way, **entering** the junction | **Path Signal**, facing into the junction | It's a genuine route decision (or merge) — the train must reserve the whole way through before committing |
+| One-way, **leaving** the junction | **Block Signal**, facing away from the junction | Plain stretch once traffic has already been routed through the switch |
+| **Two-way** (both directions occur at this point) | **Path Signal** (facing in) **+ Block Signal** (facing away) — a facing pair | It serves as both an entry and an exit, so it needs both roles covered |
+
+That's the whole rule. A junction with a trunk plus two other legs just applies this table to each of the three legs independently — the signal on leg A never depends on what leg B or C is doing.
+
+### Scenario:
+
+Trunk (given) two-way, right branch two-way, left branch one-way-in:
+
+- **Trunk**: two-way → Path Signal (in) + Block Signal (out)
+- **Right branch**: two-way → Path Signal (in) + Block Signal (out)
+- **Left branch**: one-way-in → Path Signal only
+
+Six signals total, and none of them needed any information about the other legs to determine.
+
+### Two caveats worth flagging
+
+1. **This assumes a genuine junction (3+ legs with an actual routing decision).** If a "junction" really only has 2 legs — i.e., it's just a name change or straight continuation with no branch — there's no route to reserve, so a plain Block Signal on the entry side is enough even without a third leg forcing a Path Signal.
+
+2. **The Trunk A dead-end case from earlier was a slight simplification.** Trunk A is two-way, so by this general rule it technically should have gotten a Block Signal facing away from the junction too (for the traffic that had just merged in via Section 2 and is now heading back out). I left that out earlier — it's not wrong to omit it (Section 2's Path Signal already guarantees a clear path through and beyond the junction), just less tight on block granularity than the fully general version. If you want the cleanest, most consistent setup across all your layouts, add it; if you want the minimum viable signal count, it's safe to skip.
+
+### Multi-diagram Visualization for Signal Placement Rules
+
+![signal_rule_by_leg_type.png](/Satisfactory/docs/image/Routing-and-Signalling-Junction-Configurations/signal_rule_by_leg_type.png)
+
+That's the whole table as a picture: purple dots are always Path Signals sitting just before the junction on any leg where trains enter it; teal dots are always Block Signals sitting just after the junction on any leg where trains leave it; a two-way leg just gets both, side by side, since it plays both roles.
+
+Now the worked example — your "missed scenario" (two-way trunk, two-way right branch, one-way-in left branch) — applying that same table to a real three-leg junction:
+
+![mixed_leg_junction_worked_example.png](image/Routing-and-Signalling-Junction-Configurations/mixed_leg_junction_worked_example.png)
+
+Six signals total, and each one was placed by looking at its own leg alone: the two two-way legs each got a Path/Block pair right next to the junction, and the one-way-in leg got a single Path Signal — no cross-referencing between legs required, exactly as you worked out.

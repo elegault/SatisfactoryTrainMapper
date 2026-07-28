@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastUpdatedIso": "2026-07-25T18:30:30.905Z",
+  "lastUpdatedIso": "2026-07-28T02:27:56.943Z",
   "settings": {
     "title": "Eric's Railroad",
     "worldWidth": 1000,
@@ -13,98 +13,82 @@
     },
     "junctionNumberOverrides": [
       {
-        "junctionId": "-900:1900",
-        "junctionNumber": 96,
-        "mergeNumber": 4,
-        "displayName": "4"
-      },
-      {
-        "junctionId": "-800:1900",
+        "junctionId": "-805:1895",
         "junctionNumber": 99,
         "splitNumber": 3,
-        "displayName": "3"
-      },
-      {
-        "junctionId": "-800:1800",
-        "junctionNumber": 98,
-        "mergeNumber": 3,
-        "displayName": "3"
-      },
-      {
-        "junctionId": "-943:2000",
-        "junctionNumber": 94,
-        "mergeNumber": 5,
-        "displayName": "5"
-      },
-      {
-        "junctionId": "-822:2303",
-        "splitNumber": 1,
-        "displayName": ""
+        "displayName": "J99"
       },
       {
         "junctionId": "-407:2400",
         "splitNumber": 2,
-        "displayName": "2"
-      },
-      {
-        "junctionId": "-574:2323",
-        "splitNumber": 4,
-        "displayName": "1"
-      },
-      {
-        "junctionId": "-993:2222",
-        "displayName": "7"
-      },
-      {
-        "junctionId": "-624:2222",
-        "displayName": "2"
+        "displayName": "J2"
       },
       {
         "junctionId": "-378:1315",
-        "displayName": "5"
+        "displayName": "J4"
       },
       {
         "junctionId": "-820:1654",
-        "displayName": "4"
+        "displayName": "J7"
       },
       {
         "junctionId": "-1252:1400",
-        "displayName": "6"
+        "displayName": "J6"
       },
       {
         "junctionId": "-1616:1305",
-        "displayName": "7"
+        "displayName": "J3"
       },
       {
         "junctionId": "-1706:1301",
-        "displayName": "6"
+        "displayName": "J2"
       },
       {
         "junctionId": "-1608:1388",
-        "displayName": "8"
+        "displayName": "J5"
       },
       {
-        "junctionId": "-2383:779",
-        "displayName": "9"
+        "junctionId": "-2361:790",
+        "displayName": "J1"
+      },
+      {
+        "junctionId": "-849:2152",
+        "displayName": "J8"
+      },
+      {
+        "junctionId": "-1150:2200",
+        "displayName": "J9"
+      },
+      {
+        "junctionId": "-838:2225",
+        "displayName": "J10"
+      },
+      {
+        "junctionId": "-829:2309",
+        "displayName": "J12"
+      },
+      {
+        "junctionId": "-712:2283",
+        "displayName": "J11"
       }
     ],
     "editorState": {
       "viewport": {
-        "zoom": 1.5,
-        "panX": -8.093325869408204,
-        "panY": -300.45138852636353
+        "zoom": 1.6636362133444913,
+        "panX": 269.8354025063886,
+        "panY": -50.45986672114077
       },
       "lastSelected": {
         "entityType": "section",
-        "id": "section-1364a373-8747-4e4c-9567-baa43026c35d"
+        "id": "section-32292638-386c-4352-8d12-effea448f20d"
       },
       "panels": {
         "topbarCollapsed": false,
         "sidebarCollapsed": true,
         "inspectorCollapsed": false,
-        "showStationSelectorPanel": true,
+        "showStationSelectorPanel": false,
         "sidebarWidth": 260,
-        "inspectorWidth": 461,
+        "inspectorWidth": 468,
         "workspacePanelDock": "Left",
         "stationSelectorDock": "Top",
         "workspacePanelSize": 347,
@@ -173,19 +157,19 @@
           "borderColor": "#0f172a",
           "borderWidth": 1.2,
           "textColor": "#000000",
-          "textSize": 28,
+          "textSize": 14,
           "textYOffset": 0
         },
         "Junction": {
           "shape": "Rectangle",
-          "width": 14,
+          "width": 28,
           "height": 30,
           "radius": 10,
           "backgroundColor": "#053fbd",
           "borderColor": "#e2e8f0",
           "borderWidth": 1.2,
           "textColor": "#fff700",
-          "textSize": 14,
+          "textSize": 11,
           "textYOffset": 0
         },
         "Invalid": {
@@ -197,7 +181,7 @@
           "borderColor": "#ff0000",
           "borderWidth": 1.2,
           "textColor": "#ffffff",
-          "textSize": 12,
+          "textSize": 16,
           "textYOffset": 0
         },
         "Undefined": {
@@ -222,15 +206,15 @@
       "stationNumber": 8,
       "color": "#c7d2fe",
       "layoutDirection": "Default",
-      "sectionInNumber": 32,
+      "sectionInNumber": 51,
       "sectionOutNumber": 1,
       "inbound": {
-        "x": -1060.2383130707772,
-        "y": 2324.684982807594
+        "x": -1052.7086983251118,
+        "y": 2359.9000025574605
       },
       "outbound": {
-        "x": -980.2383130707772,
-        "y": 2324.684982807594
+        "x": -972.7086983251118,
+        "y": 2359.9000025574605
       },
       "liquidFreightStationCount": 0,
       "solidFreightStationCount": 0,
@@ -336,12 +320,12 @@
       "sectionInNumber": 47,
       "sectionOutNumber": 46,
       "inbound": {
-        "x": -2548.5117407675307,
-        "y": 719.9587178887679
+        "x": -2545.4827051907714,
+        "y": 720.7159545286785
       },
       "outbound": {
-        "x": -2468.5117407675343,
-        "y": 719.9587178887679
+        "x": -2465.482705190775,
+        "y": 720.7159545286785
       },
       "liquidFreightStationCount": 0,
       "solidFreightStationCount": 1,
@@ -497,16 +481,16 @@
       "sectionNumber": 1,
       "sectionName": "1",
       "color": "#ff0000",
-      "sectionKind": "Straight",
+      "sectionKind": "Curved",
       "directionMode": "OneWay1To2",
       "curveBendMin": 0,
       "curveBendMax": 480,
-      "curveBend": 120,
+      "curveBend": 9.928600595461946,
       "endpoint1": {
         "sectionNumber": 1,
         "coordinate": {
-          "x": -924.2383130707772,
-          "y": 2324.684982807594
+          "x": -916.7086983251118,
+          "y": 2359.9000025574605
         },
         "stationConnection": {
           "stationId": "station-49ffa15c-bf81-4c52-a2a3-194cdf044f25",
@@ -514,30 +498,30 @@
         },
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Path"
           }
         },
         "entranceMode": "Allowed"
       },
       "endpoint2": {
-        "sectionNumber": 2,
+        "sectionNumber": 48,
         "coordinate": {
-          "x": -822,
-          "y": 2303
+          "x": -829.2685584280035,
+          "y": 2309.074970702322
         },
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Implemented",
             "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           }
         },
@@ -550,142 +534,44 @@
       "sectionName": "2",
       "color": "#004cff",
       "sectionKind": "Straight",
-      "directionMode": "OneWay1To2",
+      "directionMode": "Bidirectional",
       "curveBendMin": 0,
       "curveBendMax": 480,
       "curveBend": 120,
       "endpoint1": {
-        "sectionNumber": 1,
+        "sectionNumber": 49,
         "coordinate": {
-          "x": -822,
-          "y": 2303
+          "x": -712,
+          "y": 2283.3882401615656
         },
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
       },
       "endpoint2": {
-        "sectionNumber": 5,
+        "sectionNumber": 7,
         "coordinate": {
-          "x": -574,
-          "y": 2323
+          "x": -407,
+          "y": 2400
         },
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Implemented",
             "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Implemented",
             "expectedType": "Block"
-          }
-        },
-        "entranceMode": "Blocked"
-      }
-    },
-    {
-      "id": "section-d617fcca-32e3-4259-b0c6-c846fb06c3b2",
-      "sectionNumber": 3,
-      "sectionName": "3",
-      "color": "#ff0000",
-      "sectionKind": "Straight",
-      "directionMode": "OneWay2To1",
-      "curveBendMin": 0,
-      "curveBendMax": 480,
-      "curveBend": 120,
-      "endpoint1": {
-        "sectionNumber": 3,
-        "coordinate": {
-          "x": -858.9728413846227,
-          "y": 2220.6487087408955
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          }
-        },
-        "entranceMode": "Blocked"
-      },
-      "endpoint2": {
-        "sectionNumber": 1,
-        "coordinate": {
-          "x": -822,
-          "y": 2303
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Allowed"
-      }
-    },
-    {
-      "id": "section-0767d172-9be7-40c5-ba1f-3a236790daff",
-      "sectionNumber": 4,
-      "sectionName": "4",
-      "color": "#ff0000",
-      "sectionKind": "Straight",
-      "directionMode": "OneWay2To1",
-      "curveBendMin": 0,
-      "curveBendMax": 480,
-      "curveBend": 120,
-      "endpoint1": {
-        "sectionNumber": 4,
-        "coordinate": {
-          "x": -814.9728413846227,
-          "y": 2176.6487087408955
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Blocked"
-      },
-      "endpoint2": {
-        "sectionNumber": 5,
-        "coordinate": {
-          "x": -624,
-          "y": 2222
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
           }
         },
         "entranceMode": "Allowed"
@@ -696,143 +582,45 @@
       "sectionNumber": 10,
       "sectionName": "10",
       "color": "#fde68a",
-      "sectionKind": "Straight",
+      "sectionKind": "Curved",
       "directionMode": "Bidirectional",
       "curveBendMin": 0,
       "curveBendMax": 480,
-      "curveBend": 120,
+      "curveBend": 12.43870270998108,
       "endpoint1": {
-        "sectionNumber": 11,
+        "sectionNumber": 13,
         "coordinate": {
-          "x": -800,
-          "y": 1900
+          "x": -805,
+          "y": 1895
         },
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
       },
       "endpoint2": {
-        "sectionNumber": 4,
+        "sectionNumber": 52,
         "coordinate": {
-          "x": -624,
-          "y": 2222
+          "x": -849,
+          "y": 2152
         },
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Allowed"
-      }
-    },
-    {
-      "id": "section-afb3505e-d1b9-4585-85a9-92ce9836c9a0",
-      "sectionNumber": 5,
-      "sectionName": "5",
-      "color": "#ff0000",
-      "sectionKind": "Straight",
-      "directionMode": "Bidirectional",
-      "curveBendMin": 0,
-      "curveBendMax": 480,
-      "curveBend": 120,
-      "endpoint1": {
-        "sectionNumber": 4,
-        "coordinate": {
-          "x": -624,
-          "y": 2222
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
+            "state": "Implemented",
             "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Allowed"
-      },
-      "endpoint2": {
-        "sectionNumber": 2,
-        "coordinate": {
-          "x": -574,
-          "y": 2323
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Allowed"
-      }
-    },
-    {
-      "id": "section-b5040c11-bfa0-485b-b085-001023535d15",
-      "sectionNumber": 6,
-      "sectionName": "6",
-      "color": "#004cff",
-      "sectionKind": "Straight",
-      "directionMode": "Bidirectional",
-      "curveBendMin": 0,
-      "curveBendMax": 480,
-      "curveBend": 120,
-      "endpoint1": {
-        "sectionNumber": 2,
-        "coordinate": {
-          "x": -574,
-          "y": 2323
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Allowed"
-      },
-      "endpoint2": {
-        "sectionNumber": 7,
-        "coordinate": {
-          "x": -406.9640391579872,
-          "y": 2400.211007205676
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
           }
         },
         "entranceMode": "Allowed"
@@ -849,7 +637,7 @@
       "curveBendMax": 480,
       "curveBend": 120,
       "endpoint1": {
-        "sectionNumber": 6,
+        "sectionNumber": 2,
         "coordinate": {
           "x": -407.01798042100637,
           "y": 2399.894496397162
@@ -857,11 +645,11 @@
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Implemented",
             "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           }
         },
@@ -879,11 +667,11 @@
         },
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Off",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Path"
           }
         },
@@ -901,7 +689,7 @@
       "curveBendMax": 480,
       "curveBend": 139,
       "endpoint1": {
-        "sectionNumber": 6,
+        "sectionNumber": 2,
         "coordinate": {
           "x": -407,
           "y": 2400
@@ -909,12 +697,12 @@
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -931,312 +719,15 @@
         },
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           }
         },
         "entranceMode": "Blocked"
-      }
-    },
-    {
-      "id": "section-db3e7af5-692d-426a-bdb9-56698a5c4414",
-      "sectionNumber": 34,
-      "sectionName": "34",
-      "color": "#ff0000",
-      "sectionKind": "Straight",
-      "directionMode": "OneWay2To1",
-      "curveBendMin": 0,
-      "curveBendMax": 480,
-      "curveBend": 120,
-      "endpoint1": {
-        "sectionNumber": 17,
-        "coordinate": {
-          "x": -993,
-          "y": 2222
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          }
-        },
-        "entranceMode": "Blocked"
-      },
-      "endpoint2": {
-        "sectionNumber": 34,
-        "coordinate": {
-          "x": -902.9728413846227,
-          "y": 2176.6487087408955
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Allowed"
-      }
-    },
-    {
-      "id": "section-f27054c5-0e3f-4367-bb78-c73d71d2e6a1",
-      "sectionNumber": 32,
-      "sectionName": "32",
-      "color": "#fde68a",
-      "sectionKind": "Straight",
-      "directionMode": "OneWay1To2",
-      "curveBendMin": 0,
-      "curveBendMax": 480,
-      "curveBend": 120,
-      "endpoint1": {
-        "sectionNumber": 17,
-        "coordinate": {
-          "x": -993,
-          "y": 2222
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Allowed"
-      },
-      "endpoint2": {
-        "sectionNumber": 32,
-        "coordinate": {
-          "x": -1116.2383130707772,
-          "y": 2324.684982807594
-        },
-        "stationConnection": {
-          "stationId": "station-49ffa15c-bf81-4c52-a2a3-194cdf044f25",
-          "side": "Left"
-        },
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          }
-        },
-        "entranceMode": "Blocked"
-      }
-    },
-    {
-      "id": "section-64fdf05c-2861-4e60-a59b-4102952b7521",
-      "sectionNumber": 17,
-      "sectionName": "17",
-      "color": "#fde68a",
-      "sectionKind": "Curved",
-      "directionMode": "OneWay1To2",
-      "curveBendMin": 0,
-      "curveBendMax": 480,
-      "curveBend": 51.99332446867114,
-      "endpoint1": {
-        "sectionNumber": 15,
-        "coordinate": {
-          "x": -942.8071737934648,
-          "y": 2000.0913033238578
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Allowed"
-      },
-      "endpoint2": {
-        "sectionNumber": 32,
-        "coordinate": {
-          "x": -993,
-          "y": 2222
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          }
-        },
-        "entranceMode": "Blocked"
-      }
-    },
-    {
-      "id": "section-928514f1-9dbe-44ab-99b4-be795eb01298",
-      "sectionNumber": 16,
-      "sectionName": "16",
-      "color": "#ff0000",
-      "sectionKind": "Curved",
-      "directionMode": "OneWay2To1",
-      "curveBendMin": 0,
-      "curveBendMax": 480,
-      "curveBend": 30,
-      "endpoint1": {
-        "sectionNumber": 15,
-        "coordinate": {
-          "x": -943.0964131032675,
-          "y": 1999.954348338071
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          }
-        },
-        "entranceMode": "Blocked"
-      },
-      "endpoint2": {
-        "sectionNumber": 16,
-        "coordinate": {
-          "x": -858.9999999999997,
-          "y": 2132.999999999999
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Allowed"
-      }
-    },
-    {
-      "id": "section-652a6d5f-01f6-4560-8752-8896aae15a8f",
-      "sectionNumber": 15,
-      "sectionName": "15",
-      "color": "#fde68a",
-      "sectionKind": "Curved",
-      "directionMode": "Bidirectional",
-      "curveBendMin": 0,
-      "curveBendMax": 480,
-      "curveBend": 30,
-      "endpoint1": {
-        "sectionNumber": 12,
-        "coordinate": {
-          "x": -899.8071737934648,
-          "y": 1900.0913033238578
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Allowed"
-      },
-      "endpoint2": {
-        "sectionNumber": 16,
-        "coordinate": {
-          "x": -943.0964131032675,
-          "y": 1999.954348338071
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Allowed"
-      }
-    },
-    {
-      "id": "section-ead1f8a7-c9c6-43e2-a839-af6b76d07b83",
-      "sectionNumber": 12,
-      "sectionName": "12",
-      "color": "#fde68a",
-      "sectionKind": "Curved",
-      "directionMode": "Bidirectional",
-      "curveBendMin": 0,
-      "curveBendMax": 480,
-      "curveBend": 6.054613776586637,
-      "endpoint1": {
-        "sectionNumber": 14,
-        "coordinate": {
-          "x": -900.0964131032675,
-          "y": 1899.954348338071
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Allowed"
-      },
-      "endpoint2": {
-        "sectionNumber": 10,
-        "coordinate": {
-          "x": -800.1928262065352,
-          "y": 1899.9086966761422
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Allowed"
       }
     },
     {
@@ -1245,93 +736,44 @@
       "sectionName": "14",
       "color": "#fde68a",
       "sectionKind": "Curved",
-      "directionMode": "Bidirectional",
+      "directionMode": "OneWay2To1",
       "curveBendMin": 0,
       "curveBendMax": 480,
-      "curveBend": 6.978906088576457,
+      "curveBend": -6.184567134234301,
       "endpoint1": {
-        "sectionNumber": 12,
+        "sectionNumber": 51,
         "coordinate": {
-          "x": -900.0964131032675,
-          "y": 1899.954348338071
+          "x": -1150,
+          "y": 2200
         },
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Path"
           }
         },
-        "entranceMode": "Allowed"
-      },
-      "endpoint2": {
-        "sectionNumber": 11,
-        "coordinate": {
-          "x": -799.9170860998157,
-          "y": 1799.9203205617243
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Allowed"
-      }
-    },
-    {
-      "id": "section-50fe5298-d87d-4a29-ab89-b099af7ca640",
-      "sectionNumber": 11,
-      "sectionName": "11",
-      "color": "#fde68a",
-      "sectionKind": "Straight",
-      "directionMode": "Bidirectional",
-      "curveBendMin": 0,
-      "curveBendMax": 480,
-      "curveBend": 120,
-      "endpoint1": {
-        "sectionNumber": 13,
-        "coordinate": {
-          "x": -800.1658278003684,
-          "y": 1800.159358876551
-        },
-        "stationConnection": null,
-        "signalSockets": {
-          "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
-          },
-          "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
-          }
-        },
-        "entranceMode": "Allowed"
+        "entranceMode": "Blocked"
       },
       "endpoint2": {
         "sectionNumber": 10,
         "coordinate": {
-          "x": -799.9035868967325,
-          "y": 1900.045651661929
+          "x": -805,
+          "y": 1895
         },
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -1348,19 +790,19 @@
       "curveBendMax": 480,
       "curveBend": 120,
       "endpoint1": {
-        "sectionNumber": 11,
+        "sectionNumber": 10,
         "coordinate": {
-          "x": -799.9170860998157,
-          "y": 1799.9203205617243
+          "x": -805,
+          "y": 1895
         },
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Path"
           }
         },
@@ -1376,11 +818,11 @@
         "signalSockets": {
           "Left": {
             "state": "Implemented",
-            "expectedType": "Block"
+            "expectedType": "Path"
           },
           "Right": {
             "state": "Implemented",
-            "expectedType": "Path"
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -1428,11 +870,11 @@
         "signalSockets": {
           "Left": {
             "state": "Implemented",
-            "expectedType": "Block"
+            "expectedType": "Path"
           },
           "Right": {
             "state": "Implemented",
-            "expectedType": "Path"
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -1460,11 +902,11 @@
         },
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           }
         },
@@ -1482,11 +924,11 @@
         },
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Path"
           }
         },
@@ -1513,11 +955,11 @@
         "signalSockets": {
           "Left": {
             "state": "Implemented",
-            "expectedType": "Block"
+            "expectedType": "Path"
           },
           "Right": {
             "state": "Implemented",
-            "expectedType": "Path"
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -1535,7 +977,7 @@
         "signalSockets": {
           "Left": {
             "state": "Off",
-            "expectedType": null
+            "expectedType": "Block"
           },
           "Right": {
             "state": "Off",
@@ -1548,7 +990,7 @@
     {
       "id": "section-724f9536-8842-4ab5-b3bf-9fca7709cede",
       "sectionNumber": 35,
-      "sectionName": "23",
+      "sectionName": "35",
       "color": "#ffffff",
       "sectionKind": "Straight",
       "directionMode": "Bidirectional",
@@ -1564,12 +1006,12 @@
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -1586,11 +1028,11 @@
         },
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Path"
           }
         },
@@ -1600,7 +1042,7 @@
     {
       "id": "section-234518c8-8808-4bab-bab3-87ae79344954",
       "sectionNumber": 36,
-      "sectionName": "19",
+      "sectionName": "36",
       "color": "#ffffff",
       "sectionKind": "Straight",
       "directionMode": "Bidirectional",
@@ -1619,11 +1061,11 @@
         },
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Path"
           }
         },
@@ -1639,10 +1081,10 @@
         "signalSockets": {
           "Left": {
             "state": "Implemented",
-            "expectedType": null
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Implemented",
+            "state": "Off",
             "expectedType": "Path"
           }
         },
@@ -1652,7 +1094,7 @@
     {
       "id": "section-b5a24822-423d-407b-b130-6d88a4611a14",
       "sectionNumber": 37,
-      "sectionName": "24",
+      "sectionName": "37",
       "color": "#ffffff",
       "sectionKind": "Straight",
       "directionMode": "Bidirectional",
@@ -1671,11 +1113,11 @@
         },
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Path"
           }
         },
@@ -1690,12 +1132,12 @@
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -1704,7 +1146,7 @@
     {
       "id": "section-085fe8c1-93bc-4ecf-a2cd-d3096f883b6b",
       "sectionNumber": 38,
-      "sectionName": "28",
+      "sectionName": "38",
       "color": "#ffffff",
       "sectionKind": "Curved",
       "directionMode": "Bidirectional",
@@ -1720,12 +1162,12 @@
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -1739,12 +1181,12 @@
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -1753,7 +1195,7 @@
     {
       "id": "section-59e84b87-e68e-47b7-b4f7-0d1b9606737b",
       "sectionNumber": 39,
-      "sectionName": "21",
+      "sectionName": "39",
       "color": "#ffffff",
       "sectionKind": "Curved",
       "directionMode": "OneWay1To2",
@@ -1773,10 +1215,10 @@
         "signalSockets": {
           "Left": {
             "state": "Off",
-            "expectedType": null
+            "expectedType": "Block"
           },
           "Right": {
-            "state": "Implemented",
+            "state": "Off",
             "expectedType": "Block"
           }
         },
@@ -1791,11 +1233,11 @@
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Off",
-            "expectedType": null
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Implemented",
+            "state": "Off",
             "expectedType": "Path"
           }
         },
@@ -1805,7 +1247,7 @@
     {
       "id": "section-546de3e5-0e85-46cd-bbd9-73c3bf8c57be",
       "sectionNumber": 40,
-      "sectionName": "20",
+      "sectionName": "40",
       "color": "#ffffff",
       "sectionKind": "Curved",
       "directionMode": "OneWay1To2",
@@ -1822,7 +1264,7 @@
         "signalSockets": {
           "Left": {
             "state": "Off",
-            "expectedType": null
+            "expectedType": "Block"
           },
           "Right": {
             "state": "Implemented",
@@ -1843,11 +1285,11 @@
         },
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           }
         },
@@ -1857,7 +1299,7 @@
     {
       "id": "section-41be6893-2e54-4851-b30c-756968e4a4e0",
       "sectionNumber": 41,
-      "sectionName": "25",
+      "sectionName": "41",
       "color": "#ffffff",
       "sectionKind": "Straight",
       "directionMode": "Bidirectional",
@@ -1873,12 +1315,12 @@
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -1895,11 +1337,11 @@
         },
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Path"
           }
         },
@@ -1909,7 +1351,7 @@
     {
       "id": "section-ca4c963e-aaf7-4dab-84a4-680dff7f8275",
       "sectionNumber": 42,
-      "sectionName": "27",
+      "sectionName": "42",
       "color": "#ffffff",
       "sectionKind": "Curved",
       "directionMode": "Bidirectional",
@@ -1925,12 +1367,12 @@
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -1944,12 +1386,12 @@
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -1958,7 +1400,7 @@
     {
       "id": "section-f6ee5671-13f2-4e63-93ba-dcc86f4f2c81",
       "sectionNumber": 43,
-      "sectionName": "29",
+      "sectionName": "43",
       "color": "#ffffff",
       "sectionKind": "Curved",
       "directionMode": "Bidirectional",
@@ -1974,12 +1416,12 @@
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -1993,12 +1435,12 @@
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -2007,7 +1449,7 @@
     {
       "id": "section-9fa59369-de1c-49a5-85cf-4bd387d0043b",
       "sectionNumber": 44,
-      "sectionName": "26",
+      "sectionName": "44",
       "color": "#ffffff",
       "sectionKind": "Straight",
       "directionMode": "Bidirectional",
@@ -2023,12 +1465,12 @@
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -2042,12 +1484,12 @@
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -2056,27 +1498,27 @@
     {
       "id": "section-869e90f2-88e8-4d54-9577-d308220eb7f4",
       "sectionNumber": 45,
-      "sectionName": "30",
+      "sectionName": "45",
       "color": "#ffffff",
-      "sectionKind": "Straight",
+      "sectionKind": "Curved",
       "directionMode": "Bidirectional",
       "curveBendMin": 0,
       "curveBendMax": 480,
-      "curveBend": 120,
+      "curveBend": -27.94566158905068,
       "endpoint1": {
         "sectionNumber": 46,
         "coordinate": {
-          "x": -2383,
-          "y": 778.6938397960334
+          "x": -2361.265933198512,
+          "y": 789.4137681239463
         },
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Path"
           }
         },
@@ -2091,12 +1533,12 @@
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Block"
+            "state": "Implemented",
+            "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -2105,18 +1547,18 @@
     {
       "id": "section-a2bf91f3-46fc-42c0-8242-2fcf568fd1af",
       "sectionNumber": 46,
-      "sectionName": "31",
+      "sectionName": "46",
       "color": "#ffffff",
       "sectionKind": "Curved",
       "directionMode": "OneWay1To2",
       "curveBendMin": 0,
       "curveBendMax": 480,
-      "curveBend": -72.85723954674359,
+      "curveBend": -142.92588591068358,
       "endpoint1": {
         "sectionNumber": 46,
         "coordinate": {
-          "x": -2508.5117407675325,
-          "y": 675.9587178887679
+          "x": -2505.4827051907732,
+          "y": 670.7159545286785
         },
         "stationConnection": {
           "stationId": "station-0b092b77-3185-4099-ba4b-8f7a31f719b6",
@@ -2124,12 +1566,12 @@
         },
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           },
           "Right": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Off",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
@@ -2137,17 +1579,17 @@
       "endpoint2": {
         "sectionNumber": 45,
         "coordinate": {
-          "x": -2383,
-          "y": 778.6938397960334
+          "x": -2361,
+          "y": 789
         },
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Implemented",
             "expectedType": "Path"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Implemented",
             "expectedType": "Block"
           }
         },
@@ -2157,18 +1599,18 @@
     {
       "id": "section-6eee7ef4-d1f8-45fa-b716-4b21bc0941ac",
       "sectionNumber": 47,
-      "sectionName": "33",
+      "sectionName": "47",
       "color": "#ffffff",
       "sectionKind": "Curved",
       "directionMode": "OneWay2To1",
       "curveBendMin": 0,
       "curveBendMax": 480,
-      "curveBend": 23.64354975202642,
+      "curveBend": 80.34097430545641,
       "endpoint1": {
         "sectionNumber": 47,
         "coordinate": {
-          "x": -2508.5117407675325,
-          "y": 763.9587178887679
+          "x": -2505.4827051907732,
+          "y": 770.7159545286785
         },
         "stationConnection": {
           "stationId": "station-0b092b77-3185-4099-ba4b-8f7a31f719b6",
@@ -2176,11 +1618,11 @@
         },
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
-            "expectedType": "Path"
+            "state": "Off",
+            "expectedType": "Block"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           }
         },
@@ -2189,35 +1631,321 @@
       "endpoint2": {
         "sectionNumber": 45,
         "coordinate": {
-          "x": -2383,
-          "y": 778.6938397960334
+          "x": -2361.265933198512,
+          "y": 789.4137681239463
         },
         "stationConnection": null,
         "signalSockets": {
           "Left": {
-            "state": "Suggested",
+            "state": "Off",
             "expectedType": "Block"
           },
           "Right": {
-            "state": "Suggested",
+            "state": "Implemented",
+            "expectedType": "Block"
+          }
+        },
+        "entranceMode": "Allowed"
+      }
+    },
+    {
+      "id": "section-521aaee8-00b2-449a-a895-be57d693cb13",
+      "sectionNumber": 48,
+      "sectionName": "Section 48",
+      "color": "#ffffff",
+      "sectionKind": "Curved",
+      "directionMode": "OneWay1To2",
+      "curveBendMin": 0,
+      "curveBendMax": 480,
+      "curveBend": 4.705528060499725,
+      "endpoint1": {
+        "sectionNumber": 1,
+        "coordinate": {
+          "x": -829.2685584280035,
+          "y": 2309.074970702322
+        },
+        "stationConnection": null,
+        "signalSockets": {
+          "Left": {
+            "state": "Off",
+            "expectedType": "Block"
+          },
+          "Right": {
+            "state": "Implemented",
+            "expectedType": "Block"
+          }
+        },
+        "entranceMode": "Allowed"
+      },
+      "endpoint2": {
+        "sectionNumber": 50,
+        "coordinate": {
+          "x": -837.643358837454,
+          "y": 2225
+        },
+        "stationConnection": null,
+        "signalSockets": {
+          "Left": {
+            "state": "Implemented",
             "expectedType": "Path"
+          },
+          "Right": {
+            "state": "Off",
+            "expectedType": "Block"
+          }
+        },
+        "entranceMode": "Blocked"
+      }
+    },
+    {
+      "id": "section-04347cb3-0880-4e22-bbd5-5473aa9d40a1",
+      "sectionNumber": 49,
+      "sectionName": "Section 49",
+      "color": "#ffffff",
+      "sectionKind": "Curved",
+      "directionMode": "OneWay1To2",
+      "curveBendMin": 0,
+      "curveBendMax": 480,
+      "curveBend": -10.984013986775992,
+      "endpoint1": {
+        "sectionNumber": 1,
+        "coordinate": {
+          "x": -829.2685584280035,
+          "y": 2309.074970702322
+        },
+        "stationConnection": null,
+        "signalSockets": {
+          "Left": {
+            "state": "Off",
+            "expectedType": "Block"
+          },
+          "Right": {
+            "state": "Implemented",
+            "expectedType": "Block"
+          }
+        },
+        "entranceMode": "Allowed"
+      },
+      "endpoint2": {
+        "sectionNumber": 2,
+        "coordinate": {
+          "x": -712,
+          "y": 2283.3882401615656
+        },
+        "stationConnection": null,
+        "signalSockets": {
+          "Left": {
+            "state": "Implemented",
+            "expectedType": "Path"
+          },
+          "Right": {
+            "state": "Off",
+            "expectedType": "Block"
+          }
+        },
+        "entranceMode": "Blocked"
+      }
+    },
+    {
+      "id": "section-29c378ad-3018-4158-8f48-6a17454c9eb5",
+      "sectionNumber": 50,
+      "sectionName": "Section 50",
+      "color": "#ffffff",
+      "sectionKind": "Curved",
+      "directionMode": "Bidirectional",
+      "curveBendMin": 0,
+      "curveBendMax": 480,
+      "curveBend": 15.792098278828622,
+      "endpoint1": {
+        "sectionNumber": 48,
+        "coordinate": {
+          "x": -837.643358837454,
+          "y": 2225
+        },
+        "stationConnection": null,
+        "signalSockets": {
+          "Left": {
+            "state": "Implemented",
+            "expectedType": "Path"
+          },
+          "Right": {
+            "state": "Implemented",
+            "expectedType": "Path"
+          }
+        },
+        "entranceMode": "Allowed"
+      },
+      "endpoint2": {
+        "sectionNumber": 2,
+        "coordinate": {
+          "x": -712,
+          "y": 2283.3882401615656
+        },
+        "stationConnection": null,
+        "signalSockets": {
+          "Left": {
+            "state": "Implemented",
+            "expectedType": "Path"
+          },
+          "Right": {
+            "state": "Implemented",
+            "expectedType": "Block"
+          }
+        },
+        "entranceMode": "Allowed"
+      }
+    },
+    {
+      "id": "section-dab7db50-7491-4e81-8b3e-5fd7ea17224d",
+      "sectionNumber": 51,
+      "sectionName": "Section 51",
+      "color": "#ffffff",
+      "sectionKind": "Curved",
+      "directionMode": "OneWay2To1",
+      "curveBendMin": 0,
+      "curveBendMax": 480,
+      "curveBend": -63.960049893181214,
+      "endpoint1": {
+        "sectionNumber": 51,
+        "coordinate": {
+          "x": -1109,
+          "y": 2360
+        },
+        "stationConnection": {
+          "stationId": "station-49ffa15c-bf81-4c52-a2a3-194cdf044f25",
+          "side": "Left"
+        },
+        "signalSockets": {
+          "Left": {
+            "state": "Off",
+            "expectedType": "Path"
+          },
+          "Right": {
+            "state": "Off",
+            "expectedType": "Block"
+          }
+        },
+        "entranceMode": "Blocked"
+      },
+      "endpoint2": {
+        "sectionNumber": 14,
+        "coordinate": {
+          "x": -1150,
+          "y": 2200
+        },
+        "stationConnection": null,
+        "signalSockets": {
+          "Left": {
+            "state": "Off",
+            "expectedType": "Block"
+          },
+          "Right": {
+            "state": "Implemented",
+            "expectedType": "Block"
+          }
+        },
+        "entranceMode": "Allowed"
+      }
+    },
+    {
+      "id": "section-1d5e1cdc-6c70-474e-bccf-787012c10385",
+      "sectionNumber": 52,
+      "sectionName": "Section 52",
+      "color": "#ffffff",
+      "sectionKind": "Curved",
+      "directionMode": "OneWay2To1",
+      "curveBendMin": 0,
+      "curveBendMax": 480,
+      "curveBend": -28.95790996901087,
+      "endpoint1": {
+        "sectionNumber": 14,
+        "coordinate": {
+          "x": -1150,
+          "y": 2200
+        },
+        "stationConnection": null,
+        "signalSockets": {
+          "Left": {
+            "state": "Implemented",
+            "expectedType": "Path"
+          },
+          "Right": {
+            "state": "Off",
+            "expectedType": "Block"
+          }
+        },
+        "entranceMode": "Blocked"
+      },
+      "endpoint2": {
+        "sectionNumber": 10,
+        "coordinate": {
+          "x": -849,
+          "y": 2152
+        },
+        "stationConnection": null,
+        "signalSockets": {
+          "Left": {
+            "state": "Off",
+            "expectedType": "Block"
+          },
+          "Right": {
+            "state": "Implemented",
+            "expectedType": "Block"
+          }
+        },
+        "entranceMode": "Allowed"
+      }
+    },
+    {
+      "id": "section-c433cc99-4191-481e-8f84-885e22bde2ef",
+      "sectionNumber": 53,
+      "sectionName": "Section 53",
+      "color": "#ffffff",
+      "sectionKind": "Curved",
+      "directionMode": "Bidirectional",
+      "curveBendMin": 0,
+      "curveBendMax": 480,
+      "curveBend": 2.043482461087251,
+      "endpoint1": {
+        "sectionNumber": 10,
+        "coordinate": {
+          "x": -849,
+          "y": 2152
+        },
+        "stationConnection": null,
+        "signalSockets": {
+          "Left": {
+            "state": "Implemented",
+            "expectedType": "Path"
+          },
+          "Right": {
+            "state": "Implemented",
+            "expectedType": "Block"
+          }
+        },
+        "entranceMode": "Allowed"
+      },
+      "endpoint2": {
+        "sectionNumber": 48,
+        "coordinate": {
+          "x": -838,
+          "y": 2225
+        },
+        "stationConnection": null,
+        "signalSockets": {
+          "Left": {
+            "state": "Implemented",
+            "expectedType": "Path"
+          },
+          "Right": {
+            "state": "Implemented",
+            "expectedType": "Block"
           }
         },
         "entranceMode": "Allowed"
       }
     }
   ],
-  "intersections": [
-    {
-      "id": "intersection-c5d5919d-894a-4ada-a3ee-4b3a1ea01e20",
-      "intersectionNumber": 1,
-      "color": "#fde68a",
-      "center": {
-        "x": -858.921017144211,
-        "y": 2177.00272408066
-      },
-      "armLength": 40
-    }
-  ],
+  "intersections": [],
   "signals": []
 }

@@ -979,7 +979,7 @@ export function normalizeMapMetadata(map: MapDocument): { fixes: string[] } {
           }
         } else {
           endpoint.signalSockets[side] = {
-            state: 'Suggested',
+            state: currentSocket.state,
             expectedType: currentSocket.expectedType ?? routeSuggestedType,
           }
         }
