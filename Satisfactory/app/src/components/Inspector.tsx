@@ -950,6 +950,9 @@ function SectionEditor({
 
       <div className="nested-editor">
         <h4>Endpoint 1</h4>
+        <p className="signal-socket-hint">
+          Local Left/Right are measured from this endpoint looking toward the opposite endpoint.
+        </p>
         <div className="form-grid compact-grid">
           <label>
             <span>Connected Section</span>
@@ -964,7 +967,7 @@ function SectionEditor({
             <input type="number" value={section.endpoint1.coordinate.y} readOnly />
           </label>
           <label>
-            <span>Left Signal State {getSignalSocketGlyph(endpoint1SignalLeft)}</span>
+            <span>Local Left Signal State {getSignalSocketGlyph(endpoint1SignalLeft)}</span>
             <small className="signal-socket-hint">{getSignalSocketHint(endpoint1SignalLeft)}</small>
             <select
               value={endpoint1SignalLeft.state}
@@ -978,7 +981,7 @@ function SectionEditor({
             </select>
           </label>
           <label>
-            <span>Left Socket Signal Type</span>
+            <span>Local Left Socket Signal Type</span>
             <select
               value={endpoint1SignalLeft.expectedType ?? ''}
               disabled={endpoint1SignalLeft.state === 'Off'}
@@ -993,7 +996,7 @@ function SectionEditor({
             </select>
           </label>
           <label>
-            <span>Right Signal State {getSignalSocketGlyph(endpoint1SignalRight)}</span>
+            <span>Local Right Signal State {getSignalSocketGlyph(endpoint1SignalRight)}</span>
             <small className="signal-socket-hint">{getSignalSocketHint(endpoint1SignalRight)}</small>
             <select
               value={endpoint1SignalRight.state}
@@ -1007,7 +1010,7 @@ function SectionEditor({
             </select>
           </label>
           <label>
-            <span>Right Socket Signal Type</span>
+            <span>Local Right Socket Signal Type</span>
             <select
               value={endpoint1SignalRight.expectedType ?? ''}
               disabled={endpoint1SignalRight.state === 'Off'}
@@ -1030,6 +1033,9 @@ function SectionEditor({
 
       <div className="nested-editor">
         <h4>Endpoint 2</h4>
+        <p className="signal-socket-hint">
+          Local Left/Right are measured from this endpoint looking toward the opposite endpoint.
+        </p>
         <div className="form-grid compact-grid">
           <label>
             <span>Connected Section</span>
@@ -1044,7 +1050,7 @@ function SectionEditor({
             <input type="number" value={section.endpoint2.coordinate.y} readOnly />
           </label>
           <label>
-            <span>Left Signal State {getSignalSocketGlyph(endpoint2SignalLeft)}</span>
+            <span>Local Left Signal State {getSignalSocketGlyph(endpoint2SignalLeft)}</span>
             <small className="signal-socket-hint">{getSignalSocketHint(endpoint2SignalLeft)}</small>
             <select
               value={endpoint2SignalLeft.state}
@@ -1058,7 +1064,7 @@ function SectionEditor({
             </select>
           </label>
           <label>
-            <span>Left Socket Signal Type</span>
+            <span>Local Left Socket Signal Type</span>
             <select
               value={endpoint2SignalLeft.expectedType ?? ''}
               disabled={endpoint2SignalLeft.state === 'Off'}
@@ -1073,7 +1079,7 @@ function SectionEditor({
             </select>
           </label>
           <label>
-            <span>Right Signal State {getSignalSocketGlyph(endpoint2SignalRight)}</span>
+            <span>Local Right Signal State {getSignalSocketGlyph(endpoint2SignalRight)}</span>
             <small className="signal-socket-hint">{getSignalSocketHint(endpoint2SignalRight)}</small>
             <select
               value={endpoint2SignalRight.state}
@@ -1087,7 +1093,7 @@ function SectionEditor({
             </select>
           </label>
           <label>
-            <span>Right Socket Signal Type</span>
+            <span>Local Right Socket Signal Type</span>
             <select
               value={endpoint2SignalRight.expectedType ?? ''}
               disabled={endpoint2SignalRight.state === 'Off'}
@@ -1421,6 +1427,7 @@ export function Inspector({
 }): JSX.Element {
   const map = useEditorStore((state) => state.map)
   const selectedEntity = useEditorStore((state) => state.selectedEntity)
+  const selectEntity = useEditorStore((state) => state.selectEntity)
   const updateStation = useEditorStore((state) => state.updateStation)
   const moveStation = useEditorStore((state) => state.moveStation)
   const updateSection = useEditorStore((state) => state.updateSection)
@@ -1445,6 +1452,7 @@ export function Inspector({
   const [relocateX, setRelocateX] = useState('')
   const [relocateY, setRelocateY] = useState('')
   const [lastAutoFixCount, setLastAutoFixCount] = useState<number | null>(null)
+  const [showConflictGroupsOnly, setShowConflictGroupsOnly] = useState(false)
   const [collapsedSections, setCollapsedSections] = useState<{
     mapUi: boolean
     selection: boolean
@@ -1615,6 +1623,22 @@ export function Inspector({
         })),
     [map.sections, routeSignalSuggestions],
   )
+  const visibleBlockSignalGroups = useMemo(
+    () =>
+      connectionReview.blockSignalGroups.filter((group) =>
+        showConflictGroupsOnly ? group.hasConflict : true,
+      ),
+    [connectionReview.blockSignalGroups, showConflictGroupsOnly],
+  )
+
+  function jumpToSection(sectionNumber: number): void {
+    const section = map.sections.find((item) => item.sectionNumber === sectionNumber)
+    if (!section) {
+      return
+    }
+
+    selectEntity({ entityType: 'section', id: section.id })
+  }
 
   useEffect(() => {
     setPathTarget('')
@@ -1835,6 +1859,54 @@ export function Inspector({
                     {sectionSignalEndpointSummaries.map((summary) => (
                       <div key={summary.id} className="review-issue-row">
                         <p>{summary.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="nested-editor">
+                  <h4>Block Entry Groups</h4>
+                  <p>
+                    Grouped by connected rail/station node. Conflicts indicate mixed Block/Path entry types at one node.
+                  </p>
+                  <div className="selection-actions">
+                    <button
+                      type="button"
+                      onClick={() => setShowConflictGroupsOnly((current) => !current)}
+                    >
+                      {showConflictGroupsOnly ? 'Show All Groups' : 'Show Conflicts Only'}
+                    </button>
+                  </div>
+                  <div className="review-issues-list">
+                    {visibleBlockSignalGroups.length === 0 && <p>No active signal entry groups found.</p>}
+                    {visibleBlockSignalGroups.map((group) => (
+                      <div
+                        key={group.id}
+                        className={group.hasConflict ? 'review-issue-row warning' : 'review-issue-row'}
+                      >
+                        <p>
+                          {group.kind}: {group.location} | Entry Types: {group.entryTypes.join(' / ')}
+                          {group.hasConflict ? ' (Conflict)' : ' (Consistent)'}
+                        </p>
+                        <p>
+                          {group.sockets
+                            .map(
+                              (socket) =>
+                                `S${socket.sectionNumber}.${socket.endpointKey}.${socket.side}=${socket.signalType}`,
+                            )
+                            .join(', ')}
+                        </p>
+                        <div className="selection-actions">
+                          {Array.from(new Set(group.sockets.map((socket) => socket.sectionNumber))).map((sectionNumber) => (
+                            <button
+                              key={`${group.id}-jump-${sectionNumber}`}
+                              type="button"
+                              onClick={() => jumpToSection(sectionNumber)}
+                            >
+                              Jump to Section {sectionNumber}
+                            </button>
+                          ))}
+                        </div>
                       </div>
                     ))}
                   </div>

@@ -34,6 +34,7 @@ export type ConnectionReviewIssue = {
     | 'SECTION_NUMBER_DUPLICATE'
     | 'INVALID_STATION_CONNECTION'
     | 'MISSING_SIGNAL'
+    | 'BLOCK_ENTRY_SIGNAL_TYPE_CONFLICT'
     | 'INVALID_SIGNAL_ATTACHMENT'
     | 'SECTION_DIRECTION_INVALID'
     | 'DUPLICATE_JUNCTION_NUMBER'
@@ -42,6 +43,28 @@ export type ConnectionReviewIssue = {
   entityType: 'section' | 'station' | 'signal' | 'intersection' | 'junction' | 'map'
   entityId: string
   message: string
+}
+
+type BlockEntryCandidate = {
+  sectionId: string
+  sectionNumber: number
+  endpointKey: SectionEndpointKey
+  side: SectionEndpointSide
+  signalType: 'Block' | 'Path'
+}
+
+export type BlockSignalGroup = {
+  id: string
+  kind: 'RailNode' | 'StationConnector'
+  location: string
+  entryTypes: Array<'Block' | 'Path'>
+  hasConflict: boolean
+  sockets: Array<{
+    sectionNumber: number
+    endpointKey: SectionEndpointKey
+    side: SectionEndpointSide
+    signalType: 'Block' | 'Path'
+  }>
 }
 
 export type JunctionMetadata = {
@@ -62,6 +85,7 @@ export type JunctionMetadata = {
 
 export type ConnectionReview = {
   issues: ConnectionReviewIssue[]
+  blockSignalGroups: BlockSignalGroup[]
   sectionConnectivity: Record<string, { connectedEndpoints: 0 | 1 | 2; status: 'ok' | 'partial' | 'orphan' }>
   stationConnectivity: Record<string, { connectedSides: 0 | 1 | 2; status: 'ok' | 'partial' | 'orphan' }>
   sectionSignalConnectivity: Record<
@@ -275,6 +299,58 @@ function buildEndpointGroups(map: Pick<MapDocument, 'sections'>): Record<string,
   return grouped
 }
 
+function buildNodeSignalTypeGroups(
+  map: MapDocument,
+  routeSignalSuggestions: Map<string, SignalType | null>,
+): Map<string, BlockEntryCandidate[]> {
+  const grouped = new Map<string, BlockEntryCandidate[]>()
+
+  const push = (nodeKey: string, candidate: BlockEntryCandidate): void => {
+    const current = grouped.get(nodeKey) ?? []
+    current.push(candidate)
+    grouped.set(nodeKey, current)
+  }
+
+  for (const section of map.sections) {
+    for (const endpointKey of ['endpoint1', 'endpoint2'] as const) {
+      const endpoint = endpointKey === 'endpoint1' ? section.endpoint1 : section.endpoint2
+      const coordinateGroupKey = `coord:${pointKey(endpoint.coordinate.x, endpoint.coordinate.y)}`
+
+      for (const side of ['Left', 'Right'] as const) {
+        const socketState = getEndpointSignalSocketState(section, endpointKey, side)
+        if (socketState.state === 'Off') {
+          continue
+        }
+
+        const expectedSignalType =
+          socketState.expectedType ?? routeSignalSuggestions.get(`${section.id}:${endpointKey}:${side}`) ?? null
+        if (!expectedSignalType) {
+          continue
+        }
+
+        const candidate: BlockEntryCandidate = {
+          sectionId: section.id,
+          sectionNumber: section.sectionNumber,
+          endpointKey,
+          side,
+          signalType: expectedSignalType,
+        }
+
+        push(coordinateGroupKey, candidate)
+
+        if (endpoint.stationConnection) {
+          push(
+            `station:${endpoint.stationConnection.stationId}:${endpoint.stationConnection.side}`,
+            candidate,
+          )
+        }
+      }
+    }
+  }
+
+  return grouped
+}
+
 function inferConnectedSectionNumber(
   map: MapDocument,
   section: MapDocument['sections'][number],
@@ -457,6 +533,7 @@ export function buildJunctionMetadata(map: MapDocument): JunctionMetadata[] {
 
 export function buildConnectionReview(map: MapDocument): ConnectionReview {
   const issues: ConnectionReviewIssue[] = []
+  const blockSignalGroups: BlockSignalGroup[] = []
   const sectionConnectivity: ConnectionReview['sectionConnectivity'] = {}
   const stationConnectivity: ConnectionReview['stationConnectivity'] = {}
   const sectionSignalConnectivity: ConnectionReview['sectionSignalConnectivity'] = {}
@@ -467,6 +544,7 @@ export function buildConnectionReview(map: MapDocument): ConnectionReview {
   const stationById = new Map(map.stations.map((station) => [station.id, station]))
   const signalSocketLookup = buildSignalSocketLookup(map)
   const junctionMetadata = buildJunctionMetadata(map)
+  const nodeSignalTypeGroups = buildNodeSignalTypeGroups(map, routeSignalSuggestions)
 
   const sectionByNumber = new Map<number, string>()
   const duplicateNumbers = new Set<number>()
@@ -475,6 +553,58 @@ export function buildConnectionReview(map: MapDocument): ConnectionReview {
       duplicateNumbers.add(section.sectionNumber)
     } else {
       sectionByNumber.set(section.sectionNumber, section.id)
+    }
+  }
+
+  for (const [nodeKey, candidates] of nodeSignalTypeGroups.entries()) {
+    if (candidates.length < 2) {
+      continue
+    }
+
+    const distinctTypes = Array.from(new Set(candidates.map((item) => item.signalType))).sort()
+    const hasConflict = distinctTypes.length > 1
+    const locationDescription = nodeKey.startsWith('station:')
+      ? `station connector ${nodeKey.replace('station:', '')}`
+      : `rail node ${nodeKey.replace('coord:', '')}`
+    const involvedSections = Array.from(new Set(candidates.map((item) => item.sectionNumber))).sort((a, b) => a - b)
+
+    blockSignalGroups.push({
+      id: nodeKey,
+      kind: nodeKey.startsWith('station:') ? 'StationConnector' : 'RailNode',
+      location: locationDescription,
+      entryTypes: distinctTypes,
+      hasConflict,
+      sockets: candidates
+        .map((candidate) => ({
+          sectionNumber: candidate.sectionNumber,
+          endpointKey: candidate.endpointKey,
+          side: candidate.side,
+          signalType: candidate.signalType,
+        }))
+        .sort((a, b) => {
+          if (a.sectionNumber !== b.sectionNumber) {
+            return a.sectionNumber - b.sectionNumber
+          }
+          if (a.endpointKey !== b.endpointKey) {
+            return a.endpointKey.localeCompare(b.endpointKey)
+          }
+          return a.side.localeCompare(b.side)
+        }),
+    })
+
+    if (!hasConflict) {
+      continue
+    }
+
+    for (const candidate of candidates) {
+      issues.push({
+        id: `block-entry-type-conflict-${nodeKey}-${candidate.sectionId}-${candidate.endpointKey}-${candidate.side}`,
+        severity: 'warning',
+        code: 'BLOCK_ENTRY_SIGNAL_TYPE_CONFLICT',
+        entityType: 'section',
+        entityId: candidate.sectionId,
+        message: `Section ${candidate.sectionNumber} has mixed entry signal types at ${locationDescription} (${distinctTypes.join(' vs ')} across sections ${involvedSections.join(', ')}). This often maps to the in-game 'conflicting entry signal types' error.`,
+      })
     }
   }
 
@@ -868,6 +998,7 @@ export function buildConnectionReview(map: MapDocument): ConnectionReview {
 
   return {
     issues,
+    blockSignalGroups: blockSignalGroups.sort((a, b) => a.location.localeCompare(b.location)),
     sectionConnectivity,
     stationConnectivity,
     sectionSignalConnectivity,

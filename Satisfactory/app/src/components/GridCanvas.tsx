@@ -2946,7 +2946,7 @@ export function GridCanvas(): JSX.Element {
                             height={channelThickness}
                             align="center"
                             verticalAlign="middle"
-                            text={getSignalChannelSymbol(leftState.state, leftState.signalType)}
+                            text={`L ${getSignalChannelSymbol(leftState.state, leftState.signalType)}`}
                             fontSize={12}
                             fill="#ffffff"
                           />
@@ -2957,7 +2957,7 @@ export function GridCanvas(): JSX.Element {
                             height={channelThickness}
                             align="center"
                             verticalAlign="middle"
-                            text={getSignalChannelSymbol(rightState.state, rightState.signalType)}
+                            text={`R ${getSignalChannelSymbol(rightState.state, rightState.signalType)}`}
                             fontSize={12}
                             fill="#ffffff"
                           />
